@@ -14,13 +14,18 @@
 
 %type <num> expression
 
+%left '+' '-'
+%left '*' '/'
+%right '='
 
 %%
 
 program: statement_list
         ;
 
-statement_list: statement
+statement_list: statement '\n'
+              | statement_list statement '\n'
+              | statement
               | statement_list statement
               ;
 

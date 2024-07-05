@@ -14,7 +14,10 @@
 "\n"                     { return '\n'; }
 [ \t]                    ;  // skip whitespace
 
-.                        { return yytext[0]; }
+.                        { 
+                            printf("Error: unrecognized token '%s'\n", yytext); 
+                            return yytext[0]; 
+                         }
 
 %%
 
